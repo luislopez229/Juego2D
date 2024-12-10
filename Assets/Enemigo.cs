@@ -6,18 +6,70 @@ using UnityEngine.SceneManagement;
 
 public class Enemigo : MonoBehaviour
 {
-    [SerializeField] private float vel = 1f;
-    Transform coorJugador;
-    private Rigidbody2D rb;
 
+    public Transform player;  // Referencia al jugador
+    public float speed = 2f;  // Velocidad del enemigo
+    public Animator anim;
+    private Rigidbody2D rb;
     private float rangoCerca = 3f;
     private bool ataca = false;
-    // Update is called once per frame
     private void Start()
     {
-        coorJugador = GameObject.Find("Player").transform;
         rb = GetComponent<Rigidbody2D>();
     }
+
+    void FixedUpdate()
+    {
+        if (Vector2.Distance(player.position, transform.position) <= rangoCerca)
+            ataca = true;
+
+        if (ataca)
+        {
+            // Calcular dirección hacia el jugador
+            Vector2 direction = player.position - transform.position;
+
+        // Redondear dirección a las 8 direcciones posibles
+        direction = Get8DirectionVector(direction);
+        anim.SetFloat("x", direction.x);
+        anim.SetFloat("y", direction.y);
+        // Mover al enemigo
+        transform.position += (Vector3)direction * speed * Time.deltaTime;
+        }
+    }
+
+    Vector2 Get8DirectionVector(Vector2 direction)
+    {
+        // Normalizar el vector de dirección
+        direction.Normalize();
+
+        // Redondear las componentes X e Y a -1, 0 o 1
+        float roundedX = Mathf.Round(direction.x);
+        float roundedY = Mathf.Round(direction.y);
+
+        // Crear el vector redondeado
+        Vector2 roundedDirection = new Vector2(roundedX, roundedY);
+
+        // Si el vector es nulo (0, 0), mantener la dirección original
+        if (roundedDirection == Vector2.zero)
+        {
+            roundedDirection = direction;
+        }
+
+        return roundedDirection;
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "Player")
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    /*[SerializeField] private float vel = 1f;
+    Transform coorJugador;
+
+
+
+    // Update is called once per frame
+
     void FixedUpdate()
     {
         if(Vector2.Distance(coorJugador.position, transform.position)  <= rangoCerca)
@@ -33,4 +85,20 @@ public class Enemigo : MonoBehaviour
         if(col.gameObject.tag == "Player")
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+    */
+    /*
+     using UnityEngine;
+
+public class EnemyMovement : MonoBehaviour
+{
+    public Transform player;  // Asigna el objeto jugador desde el inspector
+    public float speed = 3f;  // Velocidad del enemigo
+
+    void Update()
+    {
+
+    }
+
+}
+*/
 }

@@ -35,7 +35,9 @@ public class Impulsos : MonoBehaviour
                             other.GetComponent<PlayerController>().enabled = false;
                         }
                         else
-                        { other.GetComponent<Enemigo>().enabled = false; }
+                        {
+                            other.GetComponent<Animator>().SetBool("girando", true);
+                            other.GetComponent<Enemigo>().enabled = false; }
                         other.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                         other.GetComponent<Rigidbody2D>().AddForce(Vector2.right * 8, ForceMode2D.Impulse);
                         other.GetComponent<SpriteRenderer>().color = Color.red;
@@ -52,7 +54,9 @@ public class Impulsos : MonoBehaviour
                             other.GetComponent<PlayerController>().enabled = false;
                         }
                         else
-                        { other.GetComponent<Enemigo>().enabled = false; }
+                        {
+                            other.GetComponent<Animator>().SetBool("girando", true);
+                            other.GetComponent<Enemigo>().enabled = false; }
                         other.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                         other.GetComponent<Rigidbody2D>().AddForce(Vector2.left * 8, ForceMode2D.Impulse);
                         other.GetComponent<SpriteRenderer>().color = Color.red;
@@ -69,7 +73,9 @@ public class Impulsos : MonoBehaviour
                             other.GetComponent<PlayerController>().enabled = false;
                         }
                         else
-                        { other.GetComponent<Enemigo>().enabled = false; }
+                        {
+                            other.GetComponent<Animator>().SetBool("girando", true);
+                            other.GetComponent<Enemigo>().enabled = false; }
                         other.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                         other.GetComponent<Rigidbody2D>().AddForce(Vector2.down * 8, ForceMode2D.Impulse);
                         other.GetComponent<SpriteRenderer>().color = Color.red;
@@ -86,7 +92,9 @@ public class Impulsos : MonoBehaviour
                             other.GetComponent<PlayerController>().enabled = false;
                         }
                         else
-                        { other.GetComponent<Enemigo>().enabled = false; }
+                        {
+                            other.GetComponent<Animator>().SetBool("girando", true);
+                            other.GetComponent<Enemigo>().enabled = false; }
                         other.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                         other.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 8, ForceMode2D.Impulse);
                         other.GetComponent<SpriteRenderer>().color = Color.red;
@@ -111,7 +119,9 @@ public class Impulsos : MonoBehaviour
                         other.GetComponent<PlayerController>().enabled = true;
                     }
                     else
-                    { other.GetComponent<Enemigo>().enabled = true; }
+                    {
+                        other.GetComponent<Animator>().SetBool("girando", false);
+                        other.GetComponent<Enemigo>().enabled = true; }
                     other.GetComponent<SpriteRenderer>().color = Color.white;
 
                     break;

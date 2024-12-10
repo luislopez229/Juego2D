@@ -22,4 +22,16 @@ void Awake()
         yield return new WaitForSeconds(transitionDelayTime);
         SceneManager.LoadScene(index);
     }
+
+    public void mostrarOpciones() {
+        GameObject.Find("PanelOpciones").SetActive(true);
+    }
+
+    public void mostrarCreditos()
+    {
+    }
+
+    public void mostrarInstrucciones()
+    {
+    }
 }
