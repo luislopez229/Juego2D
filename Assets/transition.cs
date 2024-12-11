@@ -6,7 +6,7 @@ public class transition : MonoBehaviour
 {
     public Animator animator;
     public float transitionDelayTime = 1.0f;
-void Awake()
+    void Awake()
     {
         animator = GameObject.Find("Transition").GetComponent<Animator>();
     }
@@ -21,17 +21,5 @@ void Awake()
         animator.SetTrigger("trigger");
         yield return new WaitForSeconds(transitionDelayTime);
         SceneManager.LoadScene(index);
-    }
-
-    public void mostrarOpciones() {
-        GameObject.Find("PanelOpciones").SetActive(true);
-    }
-
-    public void mostrarCreditos()
-    {
-    }
-
-    public void mostrarInstrucciones()
-    {
     }
 }

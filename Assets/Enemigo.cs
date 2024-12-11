@@ -13,9 +13,14 @@ public class Enemigo : MonoBehaviour
     private Rigidbody2D rb;
     private float rangoCerca = 3f;
     private bool ataca = false;
+    public GameObject[] muertes;
+    public bool muriendo = false;
+    Color tmp;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        tmp = gameObject.GetComponent<SpriteRenderer>().color;
+        tmp.a = 0f;
     }
 
     void FixedUpdate()
@@ -60,9 +65,15 @@ public class Enemigo : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.tag == "Player")
+        if (col.gameObject.tag == "Player") 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    public void Muere() {
+        Instantiate(muertes[Random.Range(0, muertes.Length)], transform.position, Quaternion.identity);
+        Destroy(gameObject);
+    }
+
     /*[SerializeField] private float vel = 1f;
     Transform coorJugador;
 

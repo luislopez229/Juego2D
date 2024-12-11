@@ -36,7 +36,7 @@ public class Zonas : MonoBehaviour
             gameObject.transform.GetChild(0).gameObject.SetActive(false);
             gameObject.GetComponent<SpriteRenderer>().color = tmp;
             destruido=true;
-            Destroy(collision.gameObject);
+            collision.gameObject.GetComponent<Enemigo>().Muere();
         }
     }
 }
