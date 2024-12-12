@@ -462,7 +462,7 @@ TextureImporter:
       name: dungeon-tileset_16
       rect:
         serializedVersion: 2
-        x: 16
+        x: 0
         y: 16
         width: 16
         height: 16
@@ -483,7 +483,7 @@ TextureImporter:
       name: dungeon-tileset_17
       rect:
         serializedVersion: 2
-        x: 32
+        x: 16
         y: 16
         width: 16
         height: 16
@@ -504,7 +504,7 @@ TextureImporter:
       name: dungeon-tileset_18
       rect:
         serializedVersion: 2
-        x: 48
+        x: 32
         y: 16
         width: 16
         height: 16
@@ -525,8 +525,8 @@ TextureImporter:
       name: dungeon-tileset_19
       rect:
         serializedVersion: 2
-        x: 16
-        y: 0
+        x: 48
+        y: 16
         width: 16
         height: 16
       alignment: 0
@@ -546,7 +546,7 @@ TextureImporter:
       name: dungeon-tileset_20
       rect:
         serializedVersion: 2
-        x: 32
+        x: 16
         y: 0
         width: 16
         height: 16
@@ -567,7 +567,7 @@ TextureImporter:
       name: dungeon-tileset_21
       rect:
         serializedVersion: 2
-        x: 48
+        x: 32
         y: 0
         width: 16
         height: 16
@@ -580,6 +580,27 @@ TextureImporter:
       bones: []
       spriteID: 83cdb9feb9c2b124baa137937ee906f4
       internalID: 557215291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeon-tileset_22
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 498dc6fe55f783b459a61ca6013110a7
+      internalID: -385301000
       vertices: []
       indices: 
       edges: []
@@ -610,6 +631,7 @@ TextureImporter:
       dungeon-tileset_2: -282876308
       dungeon-tileset_20: 2041212406
       dungeon-tileset_21: 557215291
+      dungeon-tileset_22: -385301000
       dungeon-tileset_3: 1306462034
       dungeon-tileset_4: 1043434580
       dungeon-tileset_5: 744813791
