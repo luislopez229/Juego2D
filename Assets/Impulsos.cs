@@ -40,7 +40,6 @@ public class Impulsos : MonoBehaviour
                             other.GetComponent<Enemigo>().enabled = false; }
                         other.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                         other.GetComponent<Rigidbody2D>().AddForce(Vector2.right * 8, ForceMode2D.Impulse);
-                        other.GetComponent<SpriteRenderer>().color = Color.red;
                     }
                     break;
                 case "ImpulsoIzquierda":
@@ -59,7 +58,6 @@ public class Impulsos : MonoBehaviour
                             other.GetComponent<Enemigo>().enabled = false; }
                         other.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                         other.GetComponent<Rigidbody2D>().AddForce(Vector2.left * 8, ForceMode2D.Impulse);
-                        other.GetComponent<SpriteRenderer>().color = Color.red;
                     }
                     break;
                 case "ImpulsoAbajo":
@@ -78,7 +76,6 @@ public class Impulsos : MonoBehaviour
                             other.GetComponent<Enemigo>().enabled = false; }
                         other.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                         other.GetComponent<Rigidbody2D>().AddForce(Vector2.down * 8, ForceMode2D.Impulse);
-                        other.GetComponent<SpriteRenderer>().color = Color.red;
                     }
                     break;
                 case "ImpulsoArriba":
@@ -97,7 +94,6 @@ public class Impulsos : MonoBehaviour
                             other.GetComponent<Enemigo>().enabled = false; }
                         other.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                         other.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 8, ForceMode2D.Impulse);
-                        other.GetComponent<SpriteRenderer>().color = Color.red;
                     }
                     break;
 
@@ -122,7 +118,6 @@ public class Impulsos : MonoBehaviour
                     {
                         other.GetComponent<Animator>().SetBool("girando", false);
                         other.GetComponent<Enemigo>().enabled = true; }
-                    other.GetComponent<SpriteRenderer>().color = Color.white;
 
                     break;
             }
