@@ -11,7 +11,7 @@ public class Enemigo : MonoBehaviour
     public float speed = 2f;  // Velocidad del enemigo
     public Animator anim;
     private Rigidbody2D rb;
-    private float rangoCerca = 3f;
+    public float rangoCerca = 3f;
     private bool ataca = false;
     public GameObject[] muertes;
     public bool muriendo = false;
