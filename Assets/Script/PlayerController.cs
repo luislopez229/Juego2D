@@ -15,10 +15,19 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
 
     public Tilemap tm;
+    private Vector2 spawnPosition;
+    private Control c;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        spawnPosition = DatosNivel.instance.GetLastCheckpoint();
+        c = GetComponent<Control>();
+        if (spawnPosition != Vector2.zero)
+        {
+            transform.position = spawnPosition;
+        }
     }
 
     void FixedUpdate()
@@ -33,10 +42,7 @@ public class PlayerController : MonoBehaviour
         anim.SetFloat("speed", movementInput.sqrMagnitude);
     }
 
-    void Update()
-    {
-        //Debug.Log("VEL: "+rb.velocity);
-    }
+
 
     void OnEnable()
     {
@@ -45,8 +51,10 @@ public class PlayerController : MonoBehaviour
 
             if (tile == false)
     {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            c.Respawn();
     }
 
     }
+
+
 }

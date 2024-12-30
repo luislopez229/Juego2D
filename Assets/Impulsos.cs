@@ -27,7 +27,7 @@ public class Impulsos : MonoBehaviour
                     if (other.GetComponent<Control>().impulsandose == false)
                     {
                         other.GetComponent<Control>().impulsandose = true;
-                        
+
                         if (other.gameObject.name == "Player")
                         {
                             anim.SetBool("girando", true);
@@ -37,7 +37,8 @@ public class Impulsos : MonoBehaviour
                         else
                         {
                             other.GetComponent<Animator>().SetBool("girando", true);
-                            other.GetComponent<Enemigo>().enabled = false; }
+                            other.GetComponent<Enemigo>().enabled = false;
+                        }
                         other.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                         other.GetComponent<Rigidbody2D>().AddForce(Vector2.right * 8, ForceMode2D.Impulse);
                     }
@@ -46,7 +47,7 @@ public class Impulsos : MonoBehaviour
                     if (other.GetComponent<Control>().impulsandose == false)
                     {
                         other.GetComponent<Control>().impulsandose = true;
-                        
+
                         if (other.gameObject.name == "Player")
                         {
                             anim.SetBool("girando", true);
@@ -55,7 +56,8 @@ public class Impulsos : MonoBehaviour
                         else
                         {
                             other.GetComponent<Animator>().SetBool("girando", true);
-                            other.GetComponent<Enemigo>().enabled = false; }
+                            other.GetComponent<Enemigo>().enabled = false;
+                        }
                         other.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                         other.GetComponent<Rigidbody2D>().AddForce(Vector2.left * 8, ForceMode2D.Impulse);
                     }
@@ -64,7 +66,7 @@ public class Impulsos : MonoBehaviour
                     if (other.GetComponent<Control>().impulsandose == false)
                     {
                         other.GetComponent<Control>().impulsandose = true;
-                        
+
                         if (other.gameObject.name == "Player")
                         {
                             anim.SetBool("girando", true);
@@ -73,7 +75,8 @@ public class Impulsos : MonoBehaviour
                         else
                         {
                             other.GetComponent<Animator>().SetBool("girando", true);
-                            other.GetComponent<Enemigo>().enabled = false; }
+                            other.GetComponent<Enemigo>().enabled = false;
+                        }
                         other.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                         other.GetComponent<Rigidbody2D>().AddForce(Vector2.down * 8, ForceMode2D.Impulse);
                     }
@@ -82,7 +85,7 @@ public class Impulsos : MonoBehaviour
                     if (other.GetComponent<Control>().impulsandose == false)
                     {
                         other.GetComponent<Control>().impulsandose = true;
-                        
+
                         if (other.gameObject.name == "Player")
                         {
                             anim.SetBool("girando", true);
@@ -91,7 +94,8 @@ public class Impulsos : MonoBehaviour
                         else
                         {
                             other.GetComponent<Animator>().SetBool("girando", true);
-                            other.GetComponent<Enemigo>().enabled = false; }
+                            other.GetComponent<Enemigo>().enabled = false;
+                        }
                         other.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                         other.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 8, ForceMode2D.Impulse);
                     }
@@ -104,21 +108,43 @@ public class Impulsos : MonoBehaviour
                         Debug.Log("Hola");
                         break;
                     }
-                        break;
-                    
-                default:
-                    other.GetComponent<Control>().impulsandose = false;
-                    
-                    if (other.gameObject.name == "Player")
-                    {
-                        anim.SetBool("girando", false);
-                        other.GetComponent<PlayerController>().enabled = true;
-                    }
-                    else
-                    {
-                        other.GetComponent<Animator>().SetBool("girando", false);
-                        other.GetComponent<Enemigo>().enabled = true; }
+                    break;
 
+                default:
+
+                    switch (this.gameObject.name)
+                    {
+                        case "ReboteDer":
+                            other.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                            other.GetComponent<Rigidbody2D>().AddForce(Vector2.right * 8, ForceMode2D.Impulse);
+                            break;
+                        case "ReboteIz":
+                            other.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                            other.GetComponent<Rigidbody2D>().AddForce(Vector2.left * 8, ForceMode2D.Impulse);
+                            break;
+                        case "ReboteAr":
+                            other.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                            other.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 8, ForceMode2D.Impulse);
+                            break;
+                        case "ReboteAb":
+                            other.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                            other.GetComponent<Rigidbody2D>().AddForce(Vector2.down * 8, ForceMode2D.Impulse);
+                            break;
+                        default:
+                            other.GetComponent<Control>().impulsandose = false;
+
+                            if (other.gameObject.name == "Player")
+                            {
+                                anim.SetBool("girando", false);
+                                other.GetComponent<PlayerController>().enabled = true;
+                            }
+                            else
+                            {
+                                other.GetComponent<Animator>().SetBool("girando", false);
+                                other.GetComponent<Enemigo>().enabled = true;
+                            }
+                            break;
+                    }
                     break;
             }
         }

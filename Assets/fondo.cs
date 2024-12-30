@@ -34,6 +34,7 @@ void Update()
     {
         startpos = transform.position;
         prueba = false;
+
     }
 
     void Update()
@@ -58,7 +59,7 @@ public class CloudController : MonoBehaviour
 
     void Start()
     {
-        // Obtener la cámara principal
+        // Obtener la cï¿½mara principal
         mainCamera = Camera.main;
     }
 
@@ -67,7 +68,7 @@ public class CloudController : MonoBehaviour
         // Mover la nube diagonalmente
         transform.position += new Vector3(1, 1, 0).normalized * speed * Time.deltaTime;
 
-        // Verificar si la nube está fuera de la vista de la cámara
+        // Verificar si la nube estï¿½ fuera de la vista de la cï¿½mara
         if (!IsInView())
         {
             TeleportToOppositeCorner();
@@ -76,27 +77,27 @@ public class CloudController : MonoBehaviour
 
     bool IsInView()
     {
-        // Obtener las coordenadas de la posición de la nube en la cámara
+        // Obtener las coordenadas de la posiciï¿½n de la nube en la cï¿½mara
         Vector3 viewportPosition = mainCamera.WorldToViewportPoint(transform.position);
 
-        // Verificar si está dentro de los límites de la cámara (0-1 en X e Y)
+        // Verificar si estï¿½ dentro de los lï¿½mites de la cï¿½mara (0-1 en X e Y)
         return viewportPosition.x > 0 && viewportPosition.x < 1 &&
                viewportPosition.y > 0 && viewportPosition.y < 1;
     }
 
     void TeleportToOppositeCorner()
     {
-        // Obtener las coordenadas de la posición de la nube en la cámara
+        // Obtener las coordenadas de la posiciï¿½n de la nube en la cï¿½mara
         Vector3 viewportPosition = mainCamera.WorldToViewportPoint(transform.position);
 
         // Teletransportar a la esquina opuesta
-        if (viewportPosition.x > 1) viewportPosition.x = 0;  // Salió por la derecha
-        else if (viewportPosition.x < 0) viewportPosition.x = 1;  // Salió por la izquierda
+        if (viewportPosition.x > 1) viewportPosition.x = 0;  // Saliï¿½ por la derecha
+        else if (viewportPosition.x < 0) viewportPosition.x = 1;  // Saliï¿½ por la izquierda
 
-        if (viewportPosition.y > 1) viewportPosition.y = 0;  // Salió por arriba
-        else if (viewportPosition.y < 0) viewportPosition.y = 1;  // Salió por abajo
+        if (viewportPosition.y > 1) viewportPosition.y = 0;  // Saliï¿½ por arriba
+        else if (viewportPosition.y < 0) viewportPosition.y = 1;  // Saliï¿½ por abajo
 
-        // Convertir de nuevo a coordenadas del mundo y aplicar la nueva posición
+        // Convertir de nuevo a coordenadas del mundo y aplicar la nueva posiciï¿½n
         transform.position = mainCamera.ViewportToWorldPoint(viewportPosition);
     }
 }

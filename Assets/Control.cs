@@ -6,39 +6,31 @@ public class Control : MonoBehaviour
 {
     // Start is called before the first frame update
     public bool impulsandose;
-    bool paused = false;
+    private transition t;
     void Start()
     {
+        t = GameObject.Find("LevelManager").GetComponent<transition>();
         impulsandose = false;
+    }
+
+    public void Respawn()
+    {   
+        t.animator.SetTrigger("trigger");
+        StartCoroutine(respawnDelay());
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-            paused = togglePause();
-    }
-
-    void OnGUI()
-    {
-        if (paused)
-        {
-            GUILayout.Label("Game is paused!");
-            if (GUILayout.Button("Click me to unpause"))
-                paused = togglePause();
+       if (Input.GetKeyDown(KeyCode.R)){
+            Respawn();
         }
     }
 
-    bool togglePause()
+        IEnumerator respawnDelay()
     {
-        if (Time.timeScale == 0f)
-        {
-            Time.timeScale = 1f;
-            return (false);
-        }
-        else
-        {
-            Time.timeScale = 0f;
-            return (true);
-        }
+        yield return new WaitForSeconds(1f);
+        transform.position = DatosNivel.instance.GetLastCheckpoint();
+        t.ReloadLevel();
+        
     }
 }
