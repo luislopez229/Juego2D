@@ -46,12 +46,17 @@ public class PlayerController : MonoBehaviour
 
     void OnEnable()
     {
+        Physics2D.IgnoreLayerCollision(21, 22, false);
         Vector3Int tilePosition = tm.WorldToCell(transform.position);
         bool tile = tm.HasTile(tilePosition);
 
             if (tile == false)
     {
             c.Respawn();
+    }
+
+    void OnDisable(){
+        Physics2D.IgnoreLayerCollision(21, 22, true);
     }
 
     }

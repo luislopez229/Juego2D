@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Tilemaps;
 
 public class Enemigo : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class Enemigo : MonoBehaviour
     public GameObject[] muertes;
     public bool muriendo = false;
     Color tmp;
+    public GameObject obsTm;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -30,10 +32,10 @@ public class Enemigo : MonoBehaviour
 
         if (ataca)
         {
-            // Calcular dirección hacia el jugador
+            // Calcular direcciï¿½n hacia el jugador
             Vector2 direction = player.position - transform.position;
 
-        // Redondear dirección a las 8 direcciones posibles
+        // Redondear direcciï¿½n a las 8 direcciones posibles
         direction = Get8DirectionVector(direction);
         anim.SetFloat("x", direction.x);
         anim.SetFloat("y", direction.y);
@@ -44,7 +46,7 @@ public class Enemigo : MonoBehaviour
 
     Vector2 Get8DirectionVector(Vector2 direction)
     {
-        // Normalizar el vector de dirección
+        // Normalizar el vector de direcciï¿½n
         direction.Normalize();
 
         // Redondear las componentes X e Y a -1, 0 o 1
@@ -54,7 +56,7 @@ public class Enemigo : MonoBehaviour
         // Crear el vector redondeado
         Vector2 roundedDirection = new Vector2(roundedX, roundedY);
 
-        // Si el vector es nulo (0, 0), mantener la dirección original
+        // Si el vector es nulo (0, 0), mantener la direcciï¿½n original
         if (roundedDirection == Vector2.zero)
         {
             roundedDirection = direction;
@@ -74,6 +76,13 @@ public class Enemigo : MonoBehaviour
         Destroy(gameObject);
     }
 
+    void OnEnable(){
+        Physics2D.IgnoreCollision(GetComponent<BoxCollider2D>(), obsTm.GetComponent<TilemapCollider2D>(), false);
+    }
+
+    void OnDisable(){
+        Physics2D.IgnoreCollision(GetComponent<BoxCollider2D>(), obsTm.GetComponent<TilemapCollider2D>(), true);
+    }
     /*[SerializeField] private float vel = 1f;
     Transform coorJugador;
 
