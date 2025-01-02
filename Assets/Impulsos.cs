@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Impulsos : MonoBehaviour
 {
@@ -8,11 +9,13 @@ public class Impulsos : MonoBehaviour
     private bool impulsandose;
 
     private Animator anim;
+    private GameObject obsTm;
     private void Start()
     {
         IM = GameObject.Find("IM");
         impulsandose = false;
         anim = GameObject.Find("Player").GetComponent<Animator>();
+        obsTm = GameObject.Find("Grid/Obstaculo");
     }
 
 
@@ -59,7 +62,7 @@ public class Impulsos : MonoBehaviour
                         {
                             other.GetComponent<Animator>().SetBool("girando", true);
                             other.GetComponent<Enemigo>().enabled = false;
-                            //ignorelayer2,4
+                            other.transform.GetChild(0).GetComponent<BoxCollider2D>().excludeLayers = 1 << 21;
                         }
                         other.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                         other.GetComponent<Rigidbody2D>().AddForce(Vector2.left * 8, ForceMode2D.Impulse);
@@ -80,7 +83,7 @@ public class Impulsos : MonoBehaviour
                         {
                             other.GetComponent<Animator>().SetBool("girando", true);
                             other.GetComponent<Enemigo>().enabled = false;
-                            //ignorelayer2,4
+                            Physics2D.IgnoreCollision(other.GetComponent<BoxCollider2D>(), obsTm.GetComponent<TilemapCollider2D>(), true);
                         }
                         other.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                         other.GetComponent<Rigidbody2D>().AddForce(Vector2.down * 8, ForceMode2D.Impulse);
@@ -101,7 +104,7 @@ public class Impulsos : MonoBehaviour
                         {
                             other.GetComponent<Animator>().SetBool("girando", true);
                             other.GetComponent<Enemigo>().enabled = false;
-                            //ignorelayer2,4
+                            Physics2D.IgnoreCollision(other.GetComponent<BoxCollider2D>(), obsTm.GetComponent<TilemapCollider2D>(), true);
                         }
                         other.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                         other.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 8, ForceMode2D.Impulse);
@@ -151,7 +154,7 @@ public class Impulsos : MonoBehaviour
                                 other.GetComponent<Animator>().SetBool("girando", false);
                                 other.GetComponent<Enemigo>().enabled = true;
                                 Physics2D.IgnoreLayerCollision(21, 23, true);
-                                //ignorelayer2,4 RESTAURAR
+                                Physics2D.IgnoreCollision(other.GetComponent<BoxCollider2D>(), obsTm.GetComponent<TilemapCollider2D>(), false);
                             }
                             break;
                     }

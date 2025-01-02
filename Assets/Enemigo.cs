@@ -75,14 +75,6 @@ public class Enemigo : MonoBehaviour
         Instantiate(muertes[Random.Range(0, muertes.Length)], transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
-
-    void OnEnable(){
-        Physics2D.IgnoreCollision(GetComponent<BoxCollider2D>(), obsTm.GetComponent<TilemapCollider2D>(), false);
-    }
-
-    void OnDisable(){
-        Physics2D.IgnoreCollision(GetComponent<BoxCollider2D>(), obsTm.GetComponent<TilemapCollider2D>(), true);
-    }
     /*[SerializeField] private float vel = 1f;
     Transform coorJugador;
 
