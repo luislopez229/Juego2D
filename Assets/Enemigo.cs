@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Tilemaps;
 
 public class Enemigo : MonoBehaviour
 {
@@ -17,7 +16,6 @@ public class Enemigo : MonoBehaviour
     public GameObject[] muertes;
     public bool muriendo = false;
     Color tmp;
-    public GameObject obsTm;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
