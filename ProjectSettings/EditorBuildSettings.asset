@@ -11,7 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/prueba.unity
     guid: 537586bdae15f074884b00e28ed42b83
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/puntuacion.unity
+    guid: d9d2c55a91102a64d917d56dc88b9bfa
+  - enabled: 1
+    path: Assets/Scenes/castillo.unity
+    guid: 558a92dae93a47e45904e837d14a1833
   m_configObjects: {}

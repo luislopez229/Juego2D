@@ -42,6 +42,7 @@ public class Impulsos : MonoBehaviour
                         {
                             other.GetComponent<Animator>().SetBool("girando", true);
                             other.GetComponent<Enemigo>().enabled = false;
+                            other.transform.GetChild(0).GetComponent<BoxCollider2D>().excludeLayers = 1 << 21;
                         }
                         other.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                         other.GetComponent<Rigidbody2D>().AddForce(Vector2.right * 8, ForceMode2D.Impulse);
@@ -83,7 +84,7 @@ public class Impulsos : MonoBehaviour
                         {
                             other.GetComponent<Animator>().SetBool("girando", true);
                             other.GetComponent<Enemigo>().enabled = false;
-                            Physics2D.IgnoreCollision(other.GetComponent<BoxCollider2D>(), obsTm.GetComponent<TilemapCollider2D>(), true);
+                            other.transform.GetChild(0).GetComponent<BoxCollider2D>().excludeLayers = 1 << 21;
                         }
                         other.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                         other.GetComponent<Rigidbody2D>().AddForce(Vector2.down * 8, ForceMode2D.Impulse);
@@ -104,7 +105,7 @@ public class Impulsos : MonoBehaviour
                         {
                             other.GetComponent<Animator>().SetBool("girando", true);
                             other.GetComponent<Enemigo>().enabled = false;
-                            Physics2D.IgnoreCollision(other.GetComponent<BoxCollider2D>(), obsTm.GetComponent<TilemapCollider2D>(), true);
+                            other.transform.GetChild(0).GetComponent<BoxCollider2D>().excludeLayers = 1 << 21;
                         }
                         other.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                         other.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 8, ForceMode2D.Impulse);
@@ -153,8 +154,7 @@ public class Impulsos : MonoBehaviour
                             {
                                 other.GetComponent<Animator>().SetBool("girando", false);
                                 other.GetComponent<Enemigo>().enabled = true;
-                                Physics2D.IgnoreLayerCollision(21, 23, true);
-                                Physics2D.IgnoreCollision(other.GetComponent<BoxCollider2D>(), obsTm.GetComponent<TilemapCollider2D>(), false);
+                                other.transform.GetChild(0).GetComponent<BoxCollider2D>().excludeLayers = 0;
                             }
                             break;
                     }

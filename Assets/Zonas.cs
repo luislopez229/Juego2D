@@ -17,10 +17,6 @@ public class Zonas : MonoBehaviour
     }
     private void OnEnable()
     {
-        foreach (Transform child in transform)
-        {
-            child.gameObject.SetActive(false);
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -36,6 +32,7 @@ public class Zonas : MonoBehaviour
             gameObject.GetComponent<SpriteRenderer>().color = tmp;
             destruido=true;
             collision.gameObject.GetComponent<Enemigo>().Muere();
+        
         }
     }
 }
