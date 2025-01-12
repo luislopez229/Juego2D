@@ -14,10 +14,14 @@ public class PlayerController : MonoBehaviour
     private Vector2 movementInputSmoothVelocity;
     private Animator anim;
 
-    public Tilemap tm;
+    [SerializeField] private Tilemap tm;
     private Vector2 spawnPosition;
     private Control c;
 
+    void Awake()
+    {
+        tm = GameObject.Find("Grid").transform.GetChild(0).GetComponent<Tilemap>();
+    }
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -50,7 +54,7 @@ public class PlayerController : MonoBehaviour
         Vector3Int tilePosition = tm.WorldToCell(transform.position);
         bool tile = tm.HasTile(tilePosition);
 
-            if (tile == false)
+            if (tile == false && (SceneManager.GetActiveScene().buildIndex) % 2 != 0)
     {
             c.Respawn();
     }
